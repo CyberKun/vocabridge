@@ -1,0 +1,291 @@
+{
+  "dataset": "../data/invoices.csv",
+  "base_iri": "https://example.org/procurement/",
+  "id_field": "invoice_number",
+  "subject": {
+    "field": "__subject__",
+    "term": "https://example.org/vocabridge/procurement#Invoice",
+    "term_label": "Invoice",
+    "value_kind": "iri",
+    "datatype": null,
+    "target_class": null,
+    "confidence": 0.98,
+    "method": "lexical-baseline",
+    "evidence": [
+      {
+        "kind": "label-match",
+        "detail": "field tokens ['invoice'] vs 'Invoice'",
+        "weight": 1.0
+      },
+      {
+        "kind": "domain-votes",
+        "detail": "3 field(s) match properties whose domain is Invoice",
+        "weight": 0.18
+      }
+    ],
+    "alternatives": [],
+    "review": {
+      "status": "accepted",
+      "reviewer": "Example Reviewer",
+      "reviewed_at": "2026-11-16T17:15:02+00:00",
+      "note": "bulk-accepted at confidence >= 0.85"
+    }
+  },
+  "fields": [
+    {
+      "field": "invoice_number",
+      "term": "https://example.org/vocabridge/procurement#invoiceNumber",
+      "term_label": "invoice number",
+      "value_kind": "literal",
+      "datatype": "http://www.w3.org/2001/XMLSchema#string",
+      "target_class": null,
+      "confidence": 1.0,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "label-match",
+          "detail": "field tokens ['invoice', 'number'] vs 'invoice number'",
+          "weight": 1.0
+        },
+        {
+          "kind": "domain",
+          "detail": "domain includes Invoice",
+          "weight": 0.12
+        },
+        {
+          "kind": "range",
+          "detail": "values look like string; range xsd:string is compatible",
+          "weight": 0.05
+        },
+        {
+          "kind": "value-pattern",
+          "detail": "all values are prefixed identifiers (e.g. PO-24-0001); the term mentions number",
+          "weight": 0.08
+        }
+      ],
+      "alternatives": [
+        {
+          "term": "https://example.org/vocabridge/procurement#orderNumber",
+          "label": "order number",
+          "confidence": 0.385
+        },
+        {
+          "term": "https://example.org/vocabridge/procurement#invoiceDate",
+          "label": "invoice date",
+          "confidence": 0.275
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "note": "bulk-accepted at confidence >= 0.85"
+      }
+    },
+    {
+      "field": "payee_ref",
+      "term": "https://example.org/vocabridge/procurement#billedBy",
+      "term_label": "billed by",
+      "value_kind": "iri",
+      "datatype": null,
+      "target_class": "https://example.org/vocabridge/procurement#Supplier",
+      "confidence": 0.632,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "label-match",
+          "detail": "field tokens ['payee'] vs 'billed by'",
+          "weight": 0.073
+        },
+        {
+          "kind": "value-overlap",
+          "detail": "4 of 4 distinct values (100%) appear in suppliers.supplier_id, the identifiers of Supplier",
+          "weight": 0.45
+        },
+        {
+          "kind": "domain",
+          "detail": "domain includes Invoice",
+          "weight": 0.12
+        }
+      ],
+      "alternatives": [
+        {
+          "term": "https://example.org/vocabridge/procurement#orderedFrom",
+          "label": "ordered from",
+          "confidence": 0.394
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:03+00:00",
+        "note": "All values found among reviewed supplier / order identifiers"
+      }
+    },
+    {
+      "field": "po_ref",
+      "term": "https://example.org/vocabridge/procurement#billsOrder",
+      "term_label": "bills order",
+      "value_kind": "iri",
+      "datatype": null,
+      "target_class": "https://example.org/vocabridge/procurement#PurchaseOrder",
+      "confidence": 0.627,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "label-match",
+          "detail": "field tokens ['po'] vs 'bills order'",
+          "weight": 0.067
+        },
+        {
+          "kind": "value-overlap",
+          "detail": "5 of 5 distinct values (100%) appear in purchase_orders.po_number, the identifiers of PurchaseOrder",
+          "weight": 0.45
+        },
+        {
+          "kind": "domain",
+          "detail": "domain includes Invoice",
+          "weight": 0.12
+        }
+      ],
+      "alternatives": [
+        {
+          "term": "https://example.org/vocabridge/procurement#orderNumber",
+          "label": "order number",
+          "confidence": 0.296
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:03+00:00",
+        "note": "All values found among reviewed supplier / order identifiers"
+      }
+    },
+    {
+      "field": "issued_on",
+      "term": "https://example.org/vocabridge/procurement#invoiceDate",
+      "term_label": "invoice date",
+      "value_kind": "literal",
+      "datatype": "http://www.w3.org/2001/XMLSchema#date",
+      "target_class": null,
+      "confidence": 0.935,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "alt-label-match",
+          "detail": "field tokens ['issued'] vs alternative label 'issued on'",
+          "weight": 0.9
+        },
+        {
+          "kind": "domain",
+          "detail": "domain includes Invoice",
+          "weight": 0.12
+        },
+        {
+          "kind": "range",
+          "detail": "values look like date; range xsd:date is compatible",
+          "weight": 0.05
+        }
+      ],
+      "alternatives": [
+        {
+          "term": "https://example.org/vocabridge/procurement#raisedBy",
+          "label": "raised by",
+          "confidence": 0.227
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "note": "bulk-accepted at confidence >= 0.85"
+      }
+    },
+    {
+      "field": "amount_due",
+      "term": "https://example.org/vocabridge/procurement#amountDue",
+      "term_label": "amount due",
+      "value_kind": "literal",
+      "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+      "target_class": null,
+      "confidence": 1.0,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "label-match",
+          "detail": "field tokens ['amount', 'due'] vs 'amount due'",
+          "weight": 1.0
+        },
+        {
+          "kind": "domain",
+          "detail": "domain includes Invoice",
+          "weight": 0.12
+        },
+        {
+          "kind": "range",
+          "detail": "values look like decimal; range xsd:decimal is compatible",
+          "weight": 0.05
+        }
+      ],
+      "alternatives": [
+        {
+          "term": "https://example.org/vocabridge/procurement#totalAmount",
+          "label": "total amount",
+          "confidence": 0.255
+        },
+        {
+          "term": "https://example.org/vocabridge/procurement#countryCode",
+          "label": "country code",
+          "confidence": 0.216
+        }
+      ],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "note": "bulk-accepted at confidence >= 0.85"
+      }
+    },
+    {
+      "field": "currency",
+      "term": "https://example.org/vocabridge/procurement#currencyCode",
+      "term_label": "currency code",
+      "value_kind": "literal",
+      "datatype": "http://www.w3.org/2001/XMLSchema#string",
+      "target_class": null,
+      "confidence": 0.895,
+      "method": "lexical-baseline",
+      "evidence": [
+        {
+          "kind": "alt-label-match",
+          "detail": "field tokens ['currency'] vs alternative label 'currency'",
+          "weight": 0.9
+        },
+        {
+          "kind": "range",
+          "detail": "values look like string; range xsd:string is compatible",
+          "weight": 0.05
+        },
+        {
+          "kind": "value-pattern",
+          "detail": "all values are three-letter upper-case codes (e.g. ISO 4217 currency codes); the term mentions code, currency, iso",
+          "weight": 0.08
+        }
+      ],
+      "alternatives": [],
+      "review": {
+        "status": "accepted",
+        "reviewer": "Example Reviewer",
+        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "note": "bulk-accepted at confidence >= 0.85"
+      }
+    }
+  ],
+  "vocabularies": [
+    "ontology/procurement.ttl"
+  ],
+  "created_at": "2026-11-16T17:15:02+00:00",
+  "generator": "vocabridge",
+  "format_version": 1
+}

@@ -1,0 +1,40 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vocab: <https://example.org/vocabridge/procurement#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/procurement/shapes/SupplierShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:description "From source field 'supplier_id'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "supplier identifier" ;
+            sh:path vocab:supplierId ],
+        [ sh:datatype xsd:date ;
+            sh:description "From source field 'registered_on'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "registration date" ;
+            sh:path vocab:registrationDate ],
+        [ sh:datatype xsd:string ;
+            sh:description "From source field 'name'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "supplier name" ;
+            sh:path vocab:supplierName ],
+        [ sh:datatype xsd:boolean ;
+            sh:description "From source field 'is_preferred'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "preferred supplier" ;
+            sh:path vocab:preferredSupplier ],
+        [ sh:datatype xsd:string ;
+            sh:description "From source field 'country'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "country code" ;
+            sh:path vocab:countryCode ] ;
+    sh:targetClass vocab:Supplier .
+

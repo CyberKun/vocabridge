@@ -1,0 +1,46 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vocab: <https://example.org/vocabridge/procurement#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/procurement/shapes/PurchaseOrderShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "From source field 'vendor_id'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "ordered from" ;
+            sh:nodeKind sh:IRI ;
+            sh:path vocab:orderedFrom ],
+        [ sh:datatype xsd:date ;
+            sh:description "From source field 'order_date'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "order date" ;
+            sh:path vocab:orderDate ],
+        [ sh:datatype xsd:decimal ;
+            sh:description "From source field 'total_amount'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "total amount" ;
+            sh:path vocab:totalAmount ],
+        [ sh:description "From source field 'cost_centre'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "raised by" ;
+            sh:nodeKind sh:IRI ;
+            sh:path vocab:raisedBy ],
+        [ sh:datatype xsd:string ;
+            sh:description "From source field 'po_number'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "order number" ;
+            sh:path vocab:orderNumber ],
+        [ sh:datatype xsd:string ;
+            sh:description "From source field 'currency'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "currency code" ;
+            sh:path vocab:currencyCode ] ;
+    sh:targetClass vocab:PurchaseOrder .
+

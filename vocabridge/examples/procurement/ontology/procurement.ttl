@@ -1,0 +1,138 @@
+@prefix proc: <https://example.org/vocabridge/procurement#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+# A deliberately small procurement ontology written for the vocabridge examples.
+# It is synthetic teaching material, not a published standard.
+
+<https://example.org/vocabridge/procurement> a owl:Ontology ;
+    rdfs:label "vocabridge example procurement ontology"@en ;
+    dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+    rdfs:comment "Minimal classes and properties for suppliers and purchase orders."@en .
+
+### Classes
+
+proc:Supplier a owl:Class ;
+    rdfs:label "Supplier"@en ;
+    skos:altLabel "Vendor"@en ;
+    rdfs:comment "An organisation that supplies goods or services under a purchase order."@en .
+
+proc:PurchaseOrder a owl:Class ;
+    rdfs:label "Purchase order"@en ;
+    skos:altLabel "PO"@en ;
+    rdfs:comment "A buyer's commitment to pay a supplier for specified goods or services."@en .
+
+proc:Invoice a owl:Class ;
+    rdfs:label "Invoice"@en ;
+    rdfs:comment "A supplier's request for payment against a purchase order."@en .
+
+proc:Department a owl:Class ;
+    rdfs:label "Department"@en ;
+    rdfs:comment "An internal organisational unit that raises purchase orders."@en .
+
+### Supplier properties
+
+proc:supplierId a owl:DatatypeProperty ;
+    rdfs:label "supplier identifier"@en ;
+    rdfs:comment "Identifier assigned to the supplier in the supplier master record."@en ;
+    rdfs:domain proc:Supplier ;
+    rdfs:range xsd:string .
+
+proc:supplierName a owl:DatatypeProperty ;
+    rdfs:label "supplier name"@en ;
+    skos:altLabel "legal name"@en ;
+    rdfs:domain proc:Supplier ;
+    rdfs:range xsd:string .
+
+proc:countryCode a owl:DatatypeProperty ;
+    rdfs:label "country code"@en ;
+    rdfs:comment "ISO 3166-1 alpha-2 code of the country of registration."@en ;
+    rdfs:domain proc:Supplier ;
+    rdfs:range xsd:string .
+
+proc:registrationDate a owl:DatatypeProperty ;
+    rdfs:label "registration date"@en ;
+    skos:altLabel "registered on"@en, "onboarded on"@en ;
+    rdfs:domain proc:Supplier ;
+    rdfs:range xsd:date .
+
+proc:preferredSupplier a owl:DatatypeProperty ;
+    rdfs:label "preferred supplier"@en ;
+    skos:altLabel "is preferred"@en ;
+    rdfs:domain proc:Supplier ;
+    rdfs:range xsd:boolean .
+
+### Purchase order properties
+
+proc:orderNumber a owl:DatatypeProperty ;
+    rdfs:label "order number"@en ;
+    skos:altLabel "PO number"@en ;
+    rdfs:domain proc:PurchaseOrder ;
+    rdfs:range xsd:string .
+
+proc:orderDate a owl:DatatypeProperty ;
+    rdfs:label "order date"@en ;
+    rdfs:domain proc:PurchaseOrder ;
+    rdfs:range xsd:date .
+
+proc:totalAmount a owl:DatatypeProperty ;
+    rdfs:label "total amount"@en ;
+    rdfs:comment "Total order value in the order currency, excluding tax."@en ;
+    rdfs:domain proc:PurchaseOrder ;
+    rdfs:range xsd:decimal .
+
+# No rdfs:domain: currency codes are used on orders and on invoices.
+proc:currencyCode a owl:DatatypeProperty ;
+    rdfs:label "currency code"@en ;
+    skos:altLabel "currency"@en ;
+    rdfs:comment "ISO 4217 three-letter currency code."@en ;
+    rdfs:range xsd:string .
+
+proc:orderedFrom a owl:ObjectProperty ;
+    rdfs:label "ordered from"@en ;
+    skos:altLabel "vendor"@en, "supplier"@en ;
+    rdfs:comment "The supplier the purchase order is placed with."@en ;
+    rdfs:domain proc:PurchaseOrder ;
+    rdfs:range proc:Supplier .
+
+proc:raisedBy a owl:ObjectProperty ;
+    rdfs:label "raised by"@en ;
+    skos:altLabel "department"@en, "cost centre"@en ;
+    rdfs:domain proc:PurchaseOrder ;
+    rdfs:range proc:Department .
+
+### Invoice properties
+
+proc:invoiceNumber a owl:DatatypeProperty ;
+    rdfs:label "invoice number"@en ;
+    rdfs:domain proc:Invoice ;
+    rdfs:range xsd:string .
+
+proc:invoiceDate a owl:DatatypeProperty ;
+    rdfs:label "invoice date"@en ;
+    skos:altLabel "issued on"@en ;
+    rdfs:domain proc:Invoice ;
+    rdfs:range xsd:date .
+
+proc:amountDue a owl:DatatypeProperty ;
+    rdfs:label "amount due"@en ;
+    rdfs:domain proc:Invoice ;
+    rdfs:range xsd:decimal .
+
+# The two properties below deliberately have labels that do not resemble the column
+# names in invoices.csv ("payee_ref", "po_ref"). Only the values can link them.
+
+proc:billedBy a owl:ObjectProperty ;
+    rdfs:label "billed by"@en ;
+    rdfs:comment "The supplier that issued the invoice."@en ;
+    rdfs:domain proc:Invoice ;
+    rdfs:range proc:Supplier .
+
+proc:billsOrder a owl:ObjectProperty ;
+    rdfs:label "bills order"@en ;
+    rdfs:comment "The purchase order the invoice is raised against."@en ;
+    rdfs:domain proc:Invoice ;
+    rdfs:range proc:PurchaseOrder .

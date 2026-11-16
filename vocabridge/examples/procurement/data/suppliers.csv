@@ -1,0 +1,6 @@
+supplier_id,name,country,registered_on,is_preferred,notes
+S-1001,Northwind Components Ltd,GB,2021-03-15,yes,Framework agreement
+S-1002,Blue Harbor Logistics,NL,2019-11-02,no,
+S-1003,Kestrel Office Supplies,IN,2022-07-21,yes,Net 30 terms
+S-1004,Granite Peak Engineering,US,2020-01-09,no,
+S-1005,Lumen Print Services,DE,2023-05-30,no,Pending audit

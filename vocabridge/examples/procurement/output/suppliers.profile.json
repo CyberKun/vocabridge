@@ -1,0 +1,92 @@
+{
+  "source": "data/suppliers.csv",
+  "name": "suppliers",
+  "row_count": 5,
+  "fields": [
+    {
+      "name": "supplier_id",
+      "inferred_type": "string",
+      "row_count": 5,
+      "missing_count": 0,
+      "distinct_count": 5,
+      "samples": [
+        "S-1001",
+        "S-1002",
+        "S-1003",
+        "S-1004",
+        "S-1005"
+      ],
+      "pattern": "prefixed-identifier"
+    },
+    {
+      "name": "name",
+      "inferred_type": "string",
+      "row_count": 5,
+      "missing_count": 0,
+      "distinct_count": 5,
+      "samples": [
+        "Northwind Components Ltd",
+        "Blue Harbor Logistics",
+        "Kestrel Office Supplies",
+        "Granite Peak Engineering",
+        "Lumen Print Services"
+      ],
+      "pattern": null
+    },
+    {
+      "name": "country",
+      "inferred_type": "string",
+      "row_count": 5,
+      "missing_count": 0,
+      "distinct_count": 5,
+      "samples": [
+        "GB",
+        "NL",
+        "IN",
+        "US",
+        "DE"
+      ],
+      "pattern": "upper-code-2"
+    },
+    {
+      "name": "registered_on",
+      "inferred_type": "date",
+      "row_count": 5,
+      "missing_count": 0,
+      "distinct_count": 5,
+      "samples": [
+        "2021-03-15",
+        "2019-11-02",
+        "2022-07-21",
+        "2020-01-09",
+        "2023-05-30"
+      ],
+      "pattern": null
+    },
+    {
+      "name": "is_preferred",
+      "inferred_type": "boolean",
+      "row_count": 5,
+      "missing_count": 0,
+      "distinct_count": 2,
+      "samples": [
+        "yes",
+        "no"
+      ],
+      "pattern": null
+    },
+    {
+      "name": "notes",
+      "inferred_type": "string",
+      "row_count": 5,
+      "missing_count": 2,
+      "distinct_count": 3,
+      "samples": [
+        "Framework agreement",
+        "Net 30 terms",
+        "Pending audit"
+      ],
+      "pattern": null
+    }
+  ]
+}

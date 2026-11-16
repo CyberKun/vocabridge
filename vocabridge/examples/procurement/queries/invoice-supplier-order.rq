@@ -1,0 +1,12 @@
+# Competency question: "For each invoice, which supplier billed it and which order does it bill?"
+# Answerable only because payee_ref and po_ref were linked by value evidence.
+PREFIX proc: <https://example.org/vocabridge/procurement#>
+
+SELECT ?invoice ?supplier ?order WHERE {
+  ?i proc:invoiceNumber ?invoice ;
+     proc:billedBy ?s ;
+     proc:billsOrder ?o .
+  ?s proc:supplierName ?supplier .
+  ?o proc:orderNumber ?order .
+}
+ORDER BY ?invoice

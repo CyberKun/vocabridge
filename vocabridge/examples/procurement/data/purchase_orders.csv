@@ -1,0 +1,7 @@
+po_number,vendor_id,order_date,total_amount,currency,cost_centre,approved_by
+PO-24-0001,S-1001,2024-01-08,12500.00,GBP,ENG-01,a.rao
+PO-24-0002,S-1003,2024-01-19,840.50,INR,OPS-02,m.chen
+PO-24-0003,S-1002,2024-02-02,4310.75,EUR,LOG-01,a.rao
+PO-24-0004,S-1001,2024-02-14,960.00,GBP,ENG-01,j.okafor
+PO-24-0005,S-1004,2024-03-01,22000.00,USD,ENG-02,m.chen
+PO-24-0006,S-1005,2024-03-12,1575.20,EUR,MKT-01,j.okafor
