@@ -51,6 +51,7 @@ class DatasetProfile:
     name: str
     row_count: int
     fields: list[FieldProfile]
+    delimiter: str | None = None
 
     def field(self, name: str) -> FieldProfile:
         for f in self.fields:
@@ -68,6 +69,7 @@ class DatasetProfile:
             name=data["name"],
             row_count=data["row_count"],
             fields=[FieldProfile(**f) for f in data["fields"]],
+            delimiter=data.get("delimiter"),
         )
 
 
@@ -96,13 +98,33 @@ def infer_type(values: list[str]) -> str:
     return "string"
 
 
-def read_records(path: str | Path) -> list[dict[str, str]]:
+def detect_delimiter(path: str | Path, delimiter: str | None = None) -> str | None:
+    """Choose a delimiter once so profiling and later generation use the same format."""
+    path = Path(path)
+    if delimiter is not None and len(delimiter) != 1:
+        raise ValueError("delimiter must be exactly one character")
+    if path.suffix.lower() not in (".csv", ".tsv"):
+        return None
+    if delimiter is not None:
+        return delimiter
+    if path.suffix.lower() == ".tsv":
+        return "\t"
+    with path.open(newline="", encoding="utf-8-sig") as handle:
+        sample = handle.read(8192)
+    try:
+        return csv.Sniffer().sniff(sample, delimiters=",;\t|").delimiter
+    except csv.Error:
+        return ","
+
+
+def read_records(path: str | Path, delimiter: str | None = None) -> list[dict[str, str]]:
     """Read a CSV file or a JSON array of flat objects into a list of string dicts."""
     path = Path(path)
     suffix = path.suffix.lower()
-    if suffix == ".csv":
+    if suffix in (".csv", ".tsv"):
+        delimiter = detect_delimiter(path, delimiter)
         with path.open(newline="", encoding="utf-8-sig") as handle:
-            return [dict(row) for row in csv.DictReader(handle)]
+            return [dict(row) for row in csv.DictReader(handle, delimiter=delimiter)]
     if suffix == ".json":
         data = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(data, list) or not all(isinstance(r, dict) for r in data):
@@ -112,7 +134,7 @@ def read_records(path: str | Path) -> list[dict[str, str]]:
              for k, v in row.items()}
             for row in data
         ]
-    raise ValueError(f"Unsupported input format: {suffix} (expected .csv or .json)")
+    raise ValueError(f"Unsupported input format: {suffix} (expected .csv, .tsv or .json)")
 
 
 def profile_records(records: list[dict[str, str]], source: str, name: str,
@@ -142,7 +164,11 @@ def profile_records(records: list[dict[str, str]], source: str, name: str,
     return DatasetProfile(source=source, name=name, row_count=len(records), fields=fields)
 
 
-def profile_file(path: str | Path, sample_size: int = 5) -> DatasetProfile:
+def profile_file(path: str | Path, sample_size: int = 5,
+                 delimiter: str | None = None) -> DatasetProfile:
     path = Path(path)
-    return profile_records(read_records(path), source=str(path), name=path.stem,
-                           sample_size=sample_size)
+    delimiter = detect_delimiter(path, delimiter)
+    profile = profile_records(read_records(path, delimiter), source=str(path), name=path.stem,
+                              sample_size=sample_size)
+    profile.delimiter = delimiter
+    return profile

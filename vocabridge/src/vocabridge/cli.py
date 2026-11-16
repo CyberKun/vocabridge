@@ -23,7 +23,7 @@ from .catalog import SOURCES, discover
 from .catalog.cache import FileCache
 from .generate import MappingNotReadyError, build_shapes, dataset_path, generate_rdf, validate
 from .hypotheses import ACCEPTED, PROPOSED, REJECTED, MappingSet
-from .profiling import profile_file, profile_records, read_records
+from .profiling import detect_delimiter, profile_file, profile_records, read_records
 from .report import render_report
 from .suggest import IDENTIFIER_TOKENS, suggest_mappings
 from .text import tokens
@@ -44,7 +44,7 @@ def _write_or_print(text: str, output: str | None) -> None:
 
 
 def cmd_profile(args: argparse.Namespace) -> int:
-    profile = profile_file(args.data, sample_size=args.samples)
+    profile = profile_file(args.data, sample_size=args.samples, delimiter=args.delimiter)
     _write_or_print(json.dumps(profile.to_dict(), indent=2) + "\n", args.output)
     return 0
 
@@ -57,7 +57,7 @@ def keywords_for(profile, extra: list[str]) -> list[str]:
 
 
 def cmd_discover(args: argparse.Namespace) -> int:
-    profile = profile_file(args.data)
+    profile = profile_file(args.data, delimiter=args.delimiter)
     keywords = args.keyword if args.only_keywords else keywords_for(profile, args.keyword)
     source = SOURCES[args.source](cache=None if args.no_cache else FileCache())
     try:
@@ -88,8 +88,10 @@ def cmd_discover(args: argparse.Namespace) -> int:
 
 
 def cmd_suggest(args: argparse.Namespace) -> int:
-    records = read_records(args.data)
+    delimiter = detect_delimiter(args.data, args.delimiter)
+    records = read_records(args.data, delimiter)
     profile = profile_records(records, source=str(args.data), name=Path(args.data).stem)
+    profile.delimiter = delimiter
     terms = load_vocabularies(args.vocab)
     try:
         links = [load_linked(m) for m in args.link]
@@ -147,7 +149,7 @@ def cmd_generate(args: argparse.Namespace) -> int:
     mapping = MappingSet.load(args.mapping)
     try:
         data = generate_rdf(mapping, args.mapping, provenance=not args.no_provenance)
-        profile = profile_file(dataset_path(mapping, args.mapping))
+        profile = profile_file(dataset_path(mapping, args.mapping), delimiter=mapping.delimiter)
         shapes = build_shapes(mapping, profile)
     except MappingNotReadyError as exc:
         print(f"error: {exc}", file=sys.stderr)
@@ -176,6 +178,12 @@ def cmd_validate(args: argparse.Namespace) -> int:
     result = validate(data, shapes)
     print("conforms" if result.conforms else result.report_text)
     return 0 if result.conforms else 1
+
+
+def _delimiter(value: str) -> str:
+    if len(value) != 1:
+        raise argparse.ArgumentTypeError("delimiter must be exactly one character")
+    return value
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -241,6 +249,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("data")
     p.add_argument("shapes")
     p.set_defaults(func=cmd_validate)
+    for command in ("profile", "suggest", "discover"):
+        sub.choices[command].add_argument(
+            "--delimiter", type=_delimiter, help="single-character CSV/TSV delimiter override")
     return parser
 
 

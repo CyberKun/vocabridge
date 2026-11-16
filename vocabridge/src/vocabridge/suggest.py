@@ -325,6 +325,7 @@ def suggest_mappings(profile: DatasetProfile, terms: list[Term], base_iri: str,
     ]
     return MappingSet(
         dataset=profile.source,
+        delimiter=profile.delimiter,
         base_iri=base_iri if base_iri.endswith(("/", "#")) else base_iri + "/",
         id_field=choose_id_field(profile),
         subject=subject,

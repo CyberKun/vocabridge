@@ -5,7 +5,7 @@
 Most teams that want a knowledge graph start with spreadsheets, CSV exports or JSON APIs. The hard part is not writing RDF; it is deciding *what each column means*, which published vocabulary already describes it, and proving that the result is correct. vocabridge makes those decisions explicit, reviewable and repeatable.
 
 ```
-CSV / JSON ──► profile ──► suggest ──► review ──► generate ──► RDF + SHACL ──► validate
+CSV / TSV / JSON ──► profile ──► suggest ──► review ──► generate ──► RDF + SHACL ──► validate
                   │           │           │
            field types   hypotheses   accepted / rejected,
            & samples     + evidence   who decided and why
@@ -100,7 +100,7 @@ Each row is followed by its evidence. For example, `vendor_id` maps to `ordered 
 
 | Capability | Status |
 | --- | --- |
-| Profile CSV and JSON (types, completeness, uniqueness, samples) | ✅ |
+| Profile CSV, TSV and JSON (types, completeness, uniqueness, samples) | ✅ |
 | Load any RDFS/OWL/SKOS vocabulary file (Turtle, RDF/XML, JSON-LD…) | ✅ |
 | Explainable baseline suggester (labels, `skos:altLabel`, domain, range) | ✅ |
 | Hypothesis model with evidence, alternatives and review audit trail | ✅ |
@@ -151,3 +151,14 @@ Vocabulary discovery uses the public [Wikidata Query Service](https://query.wiki
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+### Delimited input
+
+`.tsv` files use tabs. For `.csv`, vocabridge detects commas, semicolons,
+tabs or pipes from the first 8 KiB, falling back to commas if detection fails.
+Use `--delimiter ';'` with `profile`, `suggest` or `discover` to override
+that choice (the value must be one character). Quoted fields are supported.
+
+Suggested mappings save the chosen delimiter so generation and linked-dataset
+loading interpret the source consistently. Older mappings without a delimiter
+continue to use commas; JSON inputs are unchanged.

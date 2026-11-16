@@ -57,3 +57,22 @@ def test_unsupported_format(tmp_path):
     path.write_text("<x/>")
     with pytest.raises(ValueError):
         read_records(path)
+
+
+@pytest.mark.parametrize("suffix,text,delimiter,expected", [
+    (".csv", "name;value\nAlice;1\n", None, [{"name": "Alice", "value": "1"}]),
+    (".tsv", "name\tvalue\nAlice\t1\n", None, [{"name": "Alice", "value": "1"}]),
+    (".csv", 'name,value\n"Alice; Bob",1\n', None, [{"name": "Alice; Bob", "value": "1"}]),
+    (".csv", "name\nAlice\n", None, [{"name": "Alice"}]),
+    (".csv", "", None, []),
+    (".tsv", "name:value\nAlice:1\n", ":", [{"name": "Alice", "value": "1"}]),
+])
+def test_delimited_records(tmp_path, suffix, text, delimiter, expected):
+    path = tmp_path / ("data" + suffix)
+    path.write_text(text, encoding="utf-8")
+    assert read_records(path, delimiter=delimiter) == expected
+
+
+def test_invalid_delimiter(tmp_path):
+    with pytest.raises(ValueError, match="exactly one character"):
+        read_records(tmp_path / "data.csv", delimiter=";;")

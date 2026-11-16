@@ -104,6 +104,7 @@ class MappingSet:
     )
     generator: str = "vocabridge"
     format_version: int = FORMAT_VERSION
+    delimiter: str | None = ","
 
     def hypothesis(self, field_name: str) -> MappingHypothesis:
         if field_name == self.subject.field:
@@ -146,6 +147,7 @@ class MappingSet:
             created_at=data.get("created_at", ""),
             generator=data.get("generator", "vocabridge"),
             format_version=version,
+            delimiter=data.get("delimiter", ","),
         )
 
     @classmethod

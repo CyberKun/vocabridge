@@ -91,7 +91,7 @@ def load_linked(mapping_file: str | Path) -> LinkedDataset:
     path = dataset_path(mapping, mapping_file)
     values = frozenset(
         (row.get(mapping.id_field) or "").strip()
-        for row in read_records(path)
+        for row in read_records(path, delimiter=mapping.delimiter)
         if (row.get(mapping.id_field) or "").strip()
     )
     return LinkedDataset(name=Path(path).stem, class_iri=mapping.subject.term,

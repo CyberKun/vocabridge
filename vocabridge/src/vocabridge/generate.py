@@ -123,7 +123,7 @@ def dataset_path(mapping: MappingSet, mapping_file: str | Path | None = None) ->
 
 def generate_rdf(mapping: MappingSet, mapping_file: str | Path | None = None,
                  provenance: bool = True) -> Graph:
-    records = read_records(dataset_path(mapping, mapping_file))
+    records = read_records(dataset_path(mapping, mapping_file), delimiter=mapping.delimiter)
     return build_graph(mapping, records, provenance=provenance)
 
 
