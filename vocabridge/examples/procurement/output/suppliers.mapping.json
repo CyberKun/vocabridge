@@ -26,9 +26,9 @@
     "alternatives": [],
     "review": {
       "status": "accepted",
-      "reviewer": "Example Reviewer",
-      "reviewed_at": "2026-11-16T17:15:01+00:00",
-      "note": "bulk-accepted at confidence >= 0.9"
+      "reviewer": "Suchismita",
+      "reviewed_at": "2026-11-17T13:50:12+00:00",
+      "note": "Confirmed the supplier entity class for procurement data"
     }
   },
   "fields": [
@@ -82,8 +82,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
         "note": "bulk-accepted at confidence >= 0.9"
       }
     },
@@ -116,8 +116,8 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
         "note": "bulk-accepted at confidence >= 0.9"
       }
     },
@@ -155,9 +155,9 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
-        "note": "Values are ISO 3166-1 alpha-2 codes"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
+        "note": ""
       }
     },
     {
@@ -195,8 +195,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
         "note": "bulk-accepted at confidence >= 0.9"
       }
     },
@@ -229,8 +229,8 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
         "note": "bulk-accepted at confidence >= 0.9"
       }
     },
@@ -253,16 +253,16 @@
       "alternatives": [],
       "review": {
         "status": "rejected",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:01+00:00",
-        "note": "Free text; no suitable property"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T13:50:29+00:00",
+        "note": ""
       }
     }
   ],
   "vocabularies": [
     "ontology/procurement.ttl"
   ],
-  "created_at": "2026-11-16T17:15:00+00:00",
+  "created_at": "2026-11-17T13:38:41+00:00",
   "generator": "vocabridge",
   "format_version": 1
 }

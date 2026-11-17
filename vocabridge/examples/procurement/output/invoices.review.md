@@ -24,7 +24,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Proposed: `Invoice` <https://example.org/vocabridge/procurement#Invoice> (method `lexical-baseline`, confidence 0.98)
 - Evidence [label-match, +1.00]: field tokens ['invoice'] vs 'Invoice'
 - Evidence [domain-votes, +0.18]: 3 field(s) match properties whose domain is Invoice
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:02+00:00 — bulk-accepted at confidence >= 0.85
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:17+00:00 — bulk-accepted at confidence >= 0.85
 
 ### `invoice_number`
 
@@ -34,7 +34,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [range, +0.05]: values look like string; range xsd:string is compatible
 - Evidence [value-pattern, +0.08]: all values are prefixed identifiers (e.g. PO-24-0001); the term mentions number
 - Alternatives: `order number` (0.39), `invoice date` (0.28)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:02+00:00 — bulk-accepted at confidence >= 0.85
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:17+00:00 — bulk-accepted at confidence >= 0.85
 
 ### `payee_ref`
 
@@ -44,7 +44,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [value-overlap, +0.45]: 4 of 4 distinct values (100%) appear in suppliers.supplier_id, the identifiers of Supplier
 - Evidence [domain, +0.12]: domain includes Invoice
 - Alternatives: `ordered from` (0.39)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:03+00:00 — All values found among reviewed supplier / order identifiers
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:19+00:00 — All values found among reviewed supplier / order identifiers
 
 ### `po_ref`
 
@@ -54,7 +54,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [value-overlap, +0.45]: 5 of 5 distinct values (100%) appear in purchase_orders.po_number, the identifiers of PurchaseOrder
 - Evidence [domain, +0.12]: domain includes Invoice
 - Alternatives: `order number` (0.30)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:03+00:00 — All values found among reviewed supplier / order identifiers
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:19+00:00 — All values found among reviewed supplier / order identifiers
 
 ### `issued_on`
 
@@ -63,7 +63,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [domain, +0.12]: domain includes Invoice
 - Evidence [range, +0.05]: values look like date; range xsd:date is compatible
 - Alternatives: `raised by` (0.23)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:02+00:00 — bulk-accepted at confidence >= 0.85
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:17+00:00 — bulk-accepted at confidence >= 0.85
 
 ### `amount_due`
 
@@ -72,7 +72,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [domain, +0.12]: domain includes Invoice
 - Evidence [range, +0.05]: values look like decimal; range xsd:decimal is compatible
 - Alternatives: `total amount` (0.26), `country code` (0.22)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:02+00:00 — bulk-accepted at confidence >= 0.85
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:17+00:00 — bulk-accepted at confidence >= 0.85
 
 ### `currency`
 
@@ -80,4 +80,4 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [alt-label-match, +0.90]: field tokens ['currency'] vs alternative label 'currency'
 - Evidence [range, +0.05]: values look like string; range xsd:string is compatible
 - Evidence [value-pattern, +0.08]: all values are three-letter upper-case codes (e.g. ISO 4217 currency codes); the term mentions code, currency, iso
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:02+00:00 — bulk-accepted at confidence >= 0.85
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:17+00:00 — bulk-accepted at confidence >= 0.85
