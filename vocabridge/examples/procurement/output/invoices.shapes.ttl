@@ -6,13 +6,7 @@
 <https://example.org/procurement/shapes/InvoiceShape> a sh:NodeShape ;
     sh:closed true ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "From source field 'po_ref'" ;
-            sh:maxCount 1 ;
-            sh:minCount 1 ;
-            sh:name "bills order" ;
-            sh:nodeKind sh:IRI ;
-            sh:path vocab:billsOrder ],
-        [ sh:description "From source field 'payee_ref'" ;
+    sh:property [ sh:description "From source field 'payee_ref'" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "billed by" ;
@@ -30,17 +24,23 @@
             sh:minCount 1 ;
             sh:name "invoice date" ;
             sh:path vocab:invoiceDate ],
+        [ sh:datatype xsd:decimal ;
+            sh:description "From source field 'amount_due'" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:name "amount due" ;
+            sh:path vocab:amountDue ],
         [ sh:datatype xsd:string ;
             sh:description "From source field 'invoice_number'" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
             sh:name "invoice number" ;
             sh:path vocab:invoiceNumber ],
-        [ sh:datatype xsd:decimal ;
-            sh:description "From source field 'amount_due'" ;
+        [ sh:description "From source field 'po_ref'" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:name "amount due" ;
-            sh:path vocab:amountDue ] ;
+            sh:name "bills order" ;
+            sh:nodeKind sh:IRI ;
+            sh:path vocab:billsOrder ] ;
     sh:targetClass vocab:Invoice .
 

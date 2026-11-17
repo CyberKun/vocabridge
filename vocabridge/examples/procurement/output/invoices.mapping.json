@@ -26,9 +26,9 @@
     "alternatives": [],
     "review": {
       "status": "accepted",
-      "reviewer": "Example Reviewer",
-      "reviewed_at": "2026-11-16T17:15:02+00:00",
-      "note": "bulk-accepted at confidence >= 0.85"
+      "reviewer": "Suchismita",
+      "reviewed_at": "2026-11-17T14:22:56+00:00",
+      "note": "Confirmed the invoice entity class"
     }
   },
   "fields": [
@@ -77,9 +77,9 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
-        "note": "bulk-accepted at confidence >= 0.85"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     },
     {
@@ -117,9 +117,9 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:03+00:00",
-        "note": "All values found among reviewed supplier / order identifiers"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     },
     {
@@ -157,9 +157,9 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:03+00:00",
-        "note": "All values found among reviewed supplier / order identifiers"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     },
     {
@@ -197,9 +197,9 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
-        "note": "bulk-accepted at confidence >= 0.85"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     },
     {
@@ -242,9 +242,9 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
-        "note": "bulk-accepted at confidence >= 0.85"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     },
     {
@@ -276,16 +276,16 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
-        "note": "bulk-accepted at confidence >= 0.85"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:23:08+00:00",
+        "note": "Reviewed invoice fields and identifier-linking evidence"
       }
     }
   ],
   "vocabularies": [
     "ontology/procurement.ttl"
   ],
-  "created_at": "2026-11-16T17:15:02+00:00",
+  "created_at": "2026-11-17T14:22:34+00:00",
   "generator": "vocabridge",
   "format_version": 1
 }

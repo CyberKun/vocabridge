@@ -24,7 +24,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Proposed: `Supplier` <https://example.org/vocabridge/procurement#Supplier> (method `lexical-baseline`, confidence 0.98)
 - Evidence [label-match, +1.00]: field tokens ['supplier'] vs 'Supplier'
 - Evidence [domain-votes, +0.18]: 3 field(s) match properties whose domain is Supplier
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — bulk-accepted at confidence >= 0.9
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:04+00:00 — bulk-accepted at confidence >= 0.9
 
 ### `supplier_id`
 
@@ -34,7 +34,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [range, +0.05]: values look like string; range xsd:string is compatible
 - Evidence [value-pattern, +0.08]: all values are prefixed identifiers (e.g. PO-24-0001); the term mentions id, identifier
 - Alternatives: `ordered from` (0.61), `supplier name` (0.59), `preferred supplier` (0.23)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — bulk-accepted at confidence >= 0.9
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:04+00:00 — bulk-accepted at confidence >= 0.9
 
 ### `name`
 
@@ -42,7 +42,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [label-match, +0.95]: field tokens ['supplier', 'name'] vs 'supplier name' (with class context)
 - Evidence [domain, +0.12]: domain includes Supplier
 - Evidence [range, +0.05]: values look like string; range xsd:string is compatible
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — bulk-accepted at confidence >= 0.9
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:04+00:00 — bulk-accepted at confidence >= 0.9
 
 ### `country`
 
@@ -51,7 +51,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [domain, +0.12]: domain includes Supplier
 - Evidence [range, +0.05]: values look like string; range xsd:string is compatible
 - Evidence [value-pattern, +0.08]: all values are two-letter upper-case codes (e.g. ISO 3166-1 alpha-2 country codes); the term mentions code, country, iso
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — Values are ISO 3166-1 alpha-2 codes
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:06+00:00 — Values are ISO 3166-1 alpha-2 codes
 
 ### `registered_on`
 
@@ -60,7 +60,7 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [domain, +0.12]: domain includes Supplier
 - Evidence [range, +0.05]: values look like date; range xsd:date is compatible
 - Alternatives: `raised by` (0.21)
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — bulk-accepted at confidence >= 0.9
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:04+00:00 — bulk-accepted at confidence >= 0.9
 
 ### `is_preferred`
 
@@ -68,10 +68,10 @@ Every row below is a **hypothesis**. Only accepted hypotheses are used to genera
 - Evidence [label-match, +0.95]: field tokens ['supplier', 'preferred'] vs 'preferred supplier' (with class context)
 - Evidence [domain, +0.12]: domain includes Supplier
 - Evidence [range, +0.05]: values look like boolean; range xsd:boolean is compatible
-- Decision: accepted by Example Reviewer at 2026-11-16T17:15:01+00:00 — bulk-accepted at confidence >= 0.9
+- Decision: accepted by Example Reviewer at 2026-11-17T12:32:04+00:00 — bulk-accepted at confidence >= 0.9
 
 ### `notes`
 
 - Proposed: _no suggestion_ (method `lexical-baseline`, confidence 0.17)
 - Evidence [no-match,  0.00]: no property scored above 0.35; needs a human or a better suggester
-- Decision: rejected by Example Reviewer at 2026-11-16T17:15:01+00:00 — Free text; no suitable property
+- Decision: rejected by Example Reviewer at 2026-11-17T12:32:08+00:00 — Free text; no suitable property

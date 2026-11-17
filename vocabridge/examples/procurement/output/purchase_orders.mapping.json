@@ -26,9 +26,9 @@
     "alternatives": [],
     "review": {
       "status": "accepted",
-      "reviewer": "Example Reviewer",
-      "reviewed_at": "2026-11-16T17:15:02+00:00",
-      "note": "bulk-accepted at confidence >= 0.75"
+      "reviewer": "Suchismita",
+      "reviewed_at": "2026-11-17T14:21:43+00:00",
+      "note": "Confirmed the purchase order entity class"
     }
   },
   "fields": [
@@ -72,8 +72,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -107,8 +107,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -157,8 +157,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -197,8 +197,8 @@
       ],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -231,8 +231,8 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -265,8 +265,8 @@
       "alternatives": [],
       "review": {
         "status": "accepted",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
         "note": "bulk-accepted at confidence >= 0.75"
       }
     },
@@ -289,16 +289,16 @@
       "alternatives": [],
       "review": {
         "status": "rejected",
-        "reviewer": "Example Reviewer",
-        "reviewed_at": "2026-11-16T17:15:02+00:00",
-        "note": "Approver is a person; out of scope for this example"
+        "reviewer": "Suchismita",
+        "reviewed_at": "2026-11-17T14:21:58+00:00",
+        "note": ""
       }
     }
   ],
   "vocabularies": [
     "ontology/procurement.ttl"
   ],
-  "created_at": "2026-11-16T17:15:01+00:00",
+  "created_at": "2026-11-17T14:21:10+00:00",
   "generator": "vocabridge",
   "format_version": 1
 }
