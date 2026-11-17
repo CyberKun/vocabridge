@@ -430,6 +430,30 @@ The objective is to keep the core mapping and review workflow reusable while all
 | Vocabulary discovery through Wikidata, behind a pluggable catalog interface | Implemented |
 | Value evidence: value patterns and cross-dataset identifier overlap (`--link`) | Implemented |
 
+## Known limitations (v0.1)
+
+vocabridge v0.1 is an early release. These limitations are known and tracked:
+
+**Validation and graph structure**
+- **Generated SHACL shapes validate one dataset at a time.** They are closed shapes, and `sh:minCount` is derived from that dataset's completeness. If several sources describe the same class (for example, two supplier systems) and their graphs are merged, the generated shapes will report false violations. Validating merged graphs against shared, human-governed domain shapes is planned for v0.2.
+- **Reference fields are checked with `sh:nodeKind sh:IRI`, not `sh:class`.** That an invoice's supplier really is a `Supplier` can only be checked when both datasets are validated together, which v0.1 does not do yet.
+- **Provenance metadata is written into the same graph as the data.** Named graphs per dataset, with provenance kept separate, are planned.
+- **Mapping files record which vocabulary files were used, but not their version or checksum,** so a later vocabulary change cannot yet be detected automatically.
+
+**Suggestions**
+- The baseline suggester uses lexical, schema and value evidence only. There is no LLM suggester yet, and no published accuracy figures yet; an evaluation harness is the first v0.2 item.
+- Matching assumes English labels.
+
+**Inputs and scale**
+- Comma-separated CSV and JSON arrays of flat objects only; files are read fully into memory. No database connectors yet.
+- One class per dataset and one value per field per row.
+- Review happens through the command line.
+
+**Discovery**
+- `vocabridge discover` depends on the public Wikidata Query Service. Its results are leads to investigate, not recommendations.
+
+Feedback on which of these matters most to you helps decide what comes next: please open an issue.
+
 ## Roadmap
 
 See [ROADMAP.md](ROADMAP.md) for the detailed plan.
